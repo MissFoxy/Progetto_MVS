@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------------
 -- Progetto MVS: gatto e topo-----------------------------------------------
 -- Filename: Progetto_MVS
--- Specifiche file: file del labirinto senza ostacoli
+-- Specifiche file: primo codice test, ostacoli generati con un mod
 -- Autori: Federica Magliocca, Giulia Pascale
 -- AA 2022-2023
 ----------------------------------------------------------------------------
@@ -25,7 +25,7 @@ Const
 Type
   w_t: 1..W-1;      -- tipo per la coordinata x del topo e la coordinata w del gatto
   h_t: 1..H-1;      -- tipo per la coordinata y del topo e la coordinata z del gatto
-  indw_t: 0.. W-1;  -- numero righe della matrice
+  indw_t: 0.. W-1;  -- numero rihe della matrice
   indh_t: 0.. H-1;  -- numero colonne della matrice
   Entity: enum { Topo, Gatto, Vuoto, Uscita, Ostacolo, Parete };  -- Tipi di entità presenti nel labirinto
   a_t: array [ indw_t ] of Entity;   
@@ -67,12 +67,13 @@ Endprocedure;
 
 
 Procedure Ostacoli();
-    Begin
-    -- inserire ostacoli  
+  Begin
+  -- inserire ostacoli  
         labirinto[1][5]:= Ostacolo;       -- inserire ostacolo
         labirinto[1][6]:= Ostacolo;       -- inserire ostacolo
         labirinto[2][2]:= Ostacolo;       -- inserire ostacolo
         labirinto[2][3]:= Ostacolo;       -- inserire ostacolo
+        labirinto[2][4]:= Ostacolo;       -- inserire ostacolo
         labirinto[2][5]:= Ostacolo;       -- inserire ostacolo
         labirinto[2][6]:= Ostacolo;       -- inserire ostacolo
         labirinto[2][8]:= Ostacolo;       -- inserire ostacolo
