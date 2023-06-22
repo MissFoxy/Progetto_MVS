@@ -165,7 +165,6 @@ Endprocedure;
     labirinto[w][z] := Vuoto;         
     w := w +1;                      -- aggiorna coordinata w del gatto
     Cattura(x,y,w,z);               -- controlla se il topo è stato catturato
-    Esci(x,y);                      -- controlla se il topo è uscito dal labirinto
     stop:=stop-2;
     labirinto[w][z] := Gatto;       -- sposta il gatto nel labirinto
   End;
@@ -181,7 +180,6 @@ Endprocedure;
     labirinto[w][z] := Vuoto;
     w := w -1;                      -- aggiorna coordinata w del gatto
     Cattura(x,y,w,z);               -- controlla se il topo è stato catturato
-    Esci(x,y);                      -- controlla se il topo è uscito dal labirinto
     stop:=stop-2;
     labirinto[w][z] := Gatto;       -- sposta il gatto nel labirinto
   End;
@@ -197,7 +195,6 @@ Endprocedure;
     labirinto[w][z] := Vuoto;
     z := z + 1;                      -- aggiorna coordinata z del gatto
     Cattura(x,y,w,z);                -- controlla se il topo è stato catturato
-    Esci(x,y);                       -- controlla se il topo è uscito dal labirinto
     stop:=stop-2;
     labirinto[w][z] := Gatto;       -- sposta il gatto nel labirinto
   End;
@@ -213,7 +210,6 @@ Endprocedure;
     labirinto[w][z] := Vuoto;
     z := z - 1;                     -- aggiorna coordinata z del gatto
     Cattura(x,y,w,z);               -- controlla se il topo è stato catturato
-    Esci(x,y);                      -- controlla se il topo è uscito dal labirinto
     stop:=stop-2;
     labirinto[w][z] := Gatto;       -- sposta il gatto nel labirinto
   End;

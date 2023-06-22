@@ -450,7 +450,7 @@ mu_1_var_t mu_1_var_t_undefined_var;
 const int mu_W = 10;
 const int mu_H = 10;
 const int mu_INITIAL_X = 1;
-const int mu_INITIAL_Y = 5;
+const int mu_INITIAL_Y = 1;
 const int mu_INITIAL_W = 8;
 const int mu_INITIAL_Z = 8;
 const int mu_USCITA_X = 1;
@@ -927,7 +927,6 @@ bool mu__boolexpr45;
 mu_labirinto[mu_w][mu_z] = mu_Vuoto;
 mu_z = (mu_z) - (1);
 mu_Cattura ( mu_x, mu_y, mu_w, mu_z );
-mu_Esci ( mu_x, mu_y );
 mu_stop = (mu_stop) - (2);
 mu_labirinto[mu_w][mu_z] = mu_Gatto;
   };
@@ -1146,7 +1145,6 @@ bool mu__boolexpr79;
 mu_labirinto[mu_w][mu_z] = mu_Vuoto;
 mu_z = (mu_z) + (1);
 mu_Cattura ( mu_x, mu_y, mu_w, mu_z );
-mu_Esci ( mu_x, mu_y );
 mu_stop = (mu_stop) - (2);
 mu_labirinto[mu_w][mu_z] = mu_Gatto;
   };
@@ -1365,7 +1363,6 @@ bool mu__boolexpr113;
 mu_labirinto[mu_w][mu_z] = mu_Vuoto;
 mu_w = (mu_w) - (1);
 mu_Cattura ( mu_x, mu_y, mu_w, mu_z );
-mu_Esci ( mu_x, mu_y );
 mu_stop = (mu_stop) - (2);
 mu_labirinto[mu_w][mu_z] = mu_Gatto;
   };
@@ -1584,7 +1581,6 @@ bool mu__boolexpr147;
 mu_labirinto[mu_w][mu_z] = mu_Vuoto;
 mu_w = (mu_w) + (1);
 mu_Cattura ( mu_x, mu_y, mu_w, mu_z );
-mu_Esci ( mu_x, mu_y );
 mu_stop = (mu_stop) - (2);
 mu_labirinto[mu_w][mu_z] = mu_Gatto;
   };
@@ -2088,117 +2084,135 @@ unsigned short StartStateManager::numstartstates = 1;
 /********************
   Invariant records
  ********************/
-int mu__invariant_180() // Invariant "Uscita: il topo è scappato"
+int mu__invariant_180() // Invariant "Ostacolo"
 {
-return (mu_topoUscito) == (mu_false);
+bool mu__boolexpr181;
+  if (!((mu_labirinto[mu_x][mu_y]) != (mu_Ostacolo))) mu__boolexpr181 = FALSE ;
+  else {
+  mu__boolexpr181 = ((mu_labirinto[mu_w][mu_z]) != (mu_Ostacolo)) ; 
+}
+return mu__boolexpr181;
 };
 
-bool mu__condition_181() // Condition for Rule "Uscita: il topo è scappato"
+bool mu__condition_182() // Condition for Rule "Ostacolo"
 {
   return mu__invariant_180( );
 }
 
 /**** end rule declaration ****/
 
-int mu__invariant_182() // Invariant "Cattura: il topo è stato catturato"
+int mu__invariant_183() // Invariant "Uscita: il topo è scappato"
+{
+return (mu_topoUscito) == (mu_false);
+};
+
+bool mu__condition_184() // Condition for Rule "Uscita: il topo è scappato"
+{
+  return mu__invariant_183( );
+}
+
+/**** end rule declaration ****/
+
+int mu__invariant_185() // Invariant "Cattura: il topo è stato catturato"
 {
 return (mu_cattura) == (mu_false);
 };
 
-bool mu__condition_183() // Condition for Rule "Cattura: il topo è stato catturato"
+bool mu__condition_186() // Condition for Rule "Cattura: il topo è stato catturato"
 {
-  return mu__invariant_182( );
+  return mu__invariant_185( );
 }
 
 /**** end rule declaration ****/
 
-int mu__invariant_184() // Invariant "z coord in range"
-{
-bool mu__boolexpr185;
-  if (!((mu_z) >= (1))) mu__boolexpr185 = FALSE ;
-  else {
-  mu__boolexpr185 = ((mu_z) <= (8)) ; 
-}
-return mu__boolexpr185;
-};
-
-bool mu__condition_186() // Condition for Rule "z coord in range"
-{
-  return mu__invariant_184( );
-}
-
-/**** end rule declaration ****/
-
-int mu__invariant_187() // Invariant "w coord in range"
+int mu__invariant_187() // Invariant "z coord in range"
 {
 bool mu__boolexpr188;
-  if (!((mu_w) >= (1))) mu__boolexpr188 = FALSE ;
+  if (!((mu_z) >= (1))) mu__boolexpr188 = FALSE ;
   else {
-  mu__boolexpr188 = ((mu_w) <= (8)) ; 
+  mu__boolexpr188 = ((mu_z) <= (8)) ; 
 }
 return mu__boolexpr188;
 };
 
-bool mu__condition_189() // Condition for Rule "w coord in range"
+bool mu__condition_189() // Condition for Rule "z coord in range"
 {
   return mu__invariant_187( );
 }
 
 /**** end rule declaration ****/
 
-int mu__invariant_190() // Invariant "y coord in range"
+int mu__invariant_190() // Invariant "w coord in range"
 {
 bool mu__boolexpr191;
-  if (!((mu_y) >= (1))) mu__boolexpr191 = FALSE ;
+  if (!((mu_w) >= (1))) mu__boolexpr191 = FALSE ;
   else {
-bool mu__boolexpr192;
-  if ((mu_y) < (9)) mu__boolexpr192 = TRUE ;
-  else {
-  mu__boolexpr192 = ((mu_y) == (mu_USCITA_Y)) ; 
-}
-  mu__boolexpr191 = (mu__boolexpr192) ; 
+  mu__boolexpr191 = ((mu_w) <= (8)) ; 
 }
 return mu__boolexpr191;
 };
 
-bool mu__condition_193() // Condition for Rule "y coord in range"
+bool mu__condition_192() // Condition for Rule "w coord in range"
 {
   return mu__invariant_190( );
 }
 
 /**** end rule declaration ****/
 
-int mu__invariant_194() // Invariant "x coord in range"
+int mu__invariant_193() // Invariant "y coord in range"
 {
+bool mu__boolexpr194;
+  if (!((mu_y) >= (1))) mu__boolexpr194 = FALSE ;
+  else {
 bool mu__boolexpr195;
-  if (!((mu_x) >= (1))) mu__boolexpr195 = FALSE ;
+  if ((mu_y) < (9)) mu__boolexpr195 = TRUE ;
   else {
-bool mu__boolexpr196;
-  if ((mu_x) < (9)) mu__boolexpr196 = TRUE ;
-  else {
-  mu__boolexpr196 = ((mu_x) == (mu_USCITA_X)) ; 
+  mu__boolexpr195 = ((mu_y) == (mu_USCITA_Y)) ; 
 }
-  mu__boolexpr195 = (mu__boolexpr196) ; 
+  mu__boolexpr194 = (mu__boolexpr195) ; 
 }
-return mu__boolexpr195;
+return mu__boolexpr194;
 };
 
-bool mu__condition_197() // Condition for Rule "x coord in range"
+bool mu__condition_196() // Condition for Rule "y coord in range"
 {
-  return mu__invariant_194( );
+  return mu__invariant_193( );
+}
+
+/**** end rule declaration ****/
+
+int mu__invariant_197() // Invariant "x coord in range"
+{
+bool mu__boolexpr198;
+  if (!((mu_x) >= (1))) mu__boolexpr198 = FALSE ;
+  else {
+bool mu__boolexpr199;
+  if ((mu_x) < (9)) mu__boolexpr199 = TRUE ;
+  else {
+  mu__boolexpr199 = ((mu_x) == (mu_USCITA_X)) ; 
+}
+  mu__boolexpr198 = (mu__boolexpr199) ; 
+}
+return mu__boolexpr198;
+};
+
+bool mu__condition_200() // Condition for Rule "x coord in range"
+{
+  return mu__invariant_197( );
 }
 
 /**** end rule declaration ****/
 
 const rulerec invariants[] = {
-{"x coord in range", &mu__condition_197, NULL, },
-{"y coord in range", &mu__condition_193, NULL, },
-{"w coord in range", &mu__condition_189, NULL, },
-{"z coord in range", &mu__condition_186, NULL, },
-{"Cattura: il topo è stato catturato", &mu__condition_183, NULL, },
-{"Uscita: il topo è scappato", &mu__condition_181, NULL, },
+{"x coord in range", &mu__condition_200, NULL, },
+{"y coord in range", &mu__condition_196, NULL, },
+{"w coord in range", &mu__condition_192, NULL, },
+{"z coord in range", &mu__condition_189, NULL, },
+{"Cattura: il topo è stato catturato", &mu__condition_186, NULL, },
+{"Uscita: il topo è scappato", &mu__condition_184, NULL, },
+{"Ostacolo", &mu__condition_182, NULL, },
 };
-const unsigned short numinvariants = 6;
+const unsigned short numinvariants = 7;
 
 /********************
   Normal/Canonicalization for scalarset
