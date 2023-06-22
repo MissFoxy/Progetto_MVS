@@ -1,4 +1,3 @@
-
 ----------------------------------------------------------------------------
 -- Progetto MVS: gatto e topo-----------------------------------------------
 -- Filename: Progetto_MVS
@@ -258,3 +257,5 @@ Invariant "Cattura: il topo è stato catturato" -- invariante: il gatto cattura 
 Invariant "Uscita: il topo è scappato"    -- invariante il topo esce dal labirinto
   topoUscito = false;
 
+Invariant "Ostacolo" -- invariante: non si può passare sopra gli ostacoli
+  labirinto[x][y] != Ostacolo & labirinto[w][z] != Ostacolo;
